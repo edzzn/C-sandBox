@@ -14,7 +14,7 @@ void agregarTop(Nodo **inicio, Nodo **fin, int n){
 	nuevo->ant = NULL;
 	if(*inicio == NULL){
 		*inicio = nuevo;
-		*fin  = nuevo;		
+		*fin  = nuevo;
 	} else {
 		nuevo->sig = *inicio;
 		(*inicio)->ant = nuevo;
@@ -52,7 +52,7 @@ void mostrarTOP(Nodo *inicio){
 
 void mostrarBot(Nodo *fin){
 	Nodo *actual;
-	actual = fin; 
+	actual = fin;
 	if ( actual == NULL){
 		printf("No existen registros.\n");
 
@@ -68,7 +68,7 @@ main(){
 	Nodo *inicio = NULL;
 	Nodo *fin = NULL;
 	int n, opcion;
-	
+
 	while(opcion != 6){
 	printf("\n******* Inicio *******\n");
 	printf("1. AgregarTOP\n");
@@ -78,13 +78,13 @@ main(){
 	printf("5. MostrarPunteros\n");
 	printf("6. Salir\n");
 	scanf("%d", &opcion);
-	
+
 	switch(opcion){
 		case 1:
 			printf("Int:");
 			scanf("%d", &n);
 			agregarTop(&inicio, &fin, n);
-			
+
 			break;
 		case 2:
 			printf("Int:");
@@ -104,7 +104,7 @@ main(){
 			break;
 		default:
 			printf("Opcion Incorrecta\n");
-			break;	
+			break;
 	}
 	}
 }
