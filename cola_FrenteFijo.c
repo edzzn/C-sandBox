@@ -1,5 +1,5 @@
 #include <stdio.h>
-int INICIO = NULL;
+int INICIO = 0;
 int FINAL = 0;
 
 
@@ -7,7 +7,7 @@ void insertar(int vector[], int nuevo_elemento){
 	if( FINAL >= sizeof(vector) ){
 		printf("La cola esta llena");
 	}else{
-		vector[FINAL+1]	= nuevo_elemento;	
+		vector[FINAL]	= nuevo_elemento;	
 		FINAL++;
 	}	
 }

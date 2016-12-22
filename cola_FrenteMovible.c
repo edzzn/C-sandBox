@@ -1,11 +1,12 @@
 #include <stdio.h>
-int INICIO = NULL;
-int FINAL = NULL;
+int INICIO = 0;
+int FINAL = 0;
 
 void insertar(int vector[], int nuevo_elemento){
-	if( FINAL >= sizeof(vector) && INICIO == 0){
+	if(INICIO == 0 && FINAL >= sizeof(vector)+1){
+		
 		printf("La cola esta llena");
-	} else if(FINAL >= sizeof(vector) && INICIO != 0) { //desplazamos el vector para hacer espacio.
+	} else if(FINAL >= sizeof(vector)+1 && INICIO != 0) { //desplazamos el vector para hacer espacio.
 		int i, v_aux[sizeof(vector)];
 		for(i = 0; i <= FINAL; i++){
 			v_aux[i] = vector[i];
@@ -15,19 +16,20 @@ void insertar(int vector[], int nuevo_elemento){
 		for(i = 0; i <= FINAL-INICIO; i++){
 			vector[i] = v_aux[INICIO + i];
 		}
-		vector[FINAL+1]	= nuevo_elemento;
+		vector[FINAL]	= nuevo_elemento;
 		FINAL++;		
 	} else{
-		vector[FINAL+1]	= nuevo_elemento;
+		vector[FINAL]	= nuevo_elemento;
 		FINAL++;	
 	}
 }
 
 void eliminar (int vector[]){
-	if(INICIO <= FINAL)	{
-		INICIO++;
-	} else {
+	if(FINAL <= 0)	{
 		printf("No existen elementos para eliminar.");
+	} else {
+		INICIO++;
+		
 	}
 }
 
@@ -76,6 +78,7 @@ void main (){
 		    case 1: 
 	    		printf("Ingrese un numero:\n");
 	    		scanf("%d",&num);
+	    		printf("Ini: %d, Fin: %d", INICIO, FINAL);
 				insertar(cola_FF, num);
 				
 		        break;
