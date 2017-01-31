@@ -18,18 +18,17 @@ int hash(int cedula){
 void ingresar(int cedula, Persona **array[], char nombre[50], char apellido[50]){
 	int key = hash(cedula);
 	Persona *nuevo = (Persona *) malloc(sizeof(Persona));
+	Persona *actual = (Persona *) malloc(sizeof(Persona));
 	nuevo->sig = NULL;
 	nuevo->cedula = cedula;
 	strcpy(nuevo->nombre, nombre);
 	strcpy(nuevo->apellido, apellido);
 	
 	if(array[key] == NULL){
-		array[key] = nuevo;
+		array[key] = &nuevo;
 	} else{
 		// Buscar Cedula REPETIDA
-		Persona *actual = (Persona *)malloc(sizeof(Persona));
-		actual = array[key];
-	//	Persona *actual = array[key];
+		actual = &array[key];
 		while(actual->sig != NULL){
 			actual = actual->sig;
 		}
@@ -38,10 +37,31 @@ void ingresar(int cedula, Persona **array[], char nombre[50], char apellido[50])
 }
 
 void mostrarIndice(Persona *array[]){
-	
+	int i;
+	printf("Vector De Hash\n\n");
+	for	(i = 0; i < SIZE; i++){
+		printf("Posicion: %d: ", i);
+		
+	}
+	print("\n\n");
 }
 
-void mostrarListaLigada(){
+void mostrarListaLigada(Persona * puntero){
+	Persona * actual = (Persona *) malloc(sizeof(Persona));
+	printf("->");
+	
+	if (puntero == NULL){
+		printf("NULL\n");
+		
+	} else {
+		Persona *nuevo = puntero;
+		
+		while(nuevo != NULL){
+			printf("%d->", nuevo->cedula);
+			nuevo = nuevo->sig;
+		}
+		printf("NULL\n");
+	}
 	
 }
 
